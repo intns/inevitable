@@ -22,7 +22,6 @@ public:
 
 	CPU(std::unique_ptr<IScheduler> scheduler)
 	    : mScheduler(std::move(scheduler))
-	    , mIrqController(*this)
 	    , mActiveProcess(nullptr)
 	{
 	}
@@ -65,8 +64,7 @@ private:
 	std::uint64_t mTick = 0;
 
 	// Scheduling
-	std::uint64_t mQuantumTimer      = 0;
-	std::uint64_t mBumpPriorityTimer = 0;
+	std::uint64_t mQuantumTimer = 0;
 	std::unique_ptr<IScheduler> mScheduler;
 
 	// Interrupts & Processes

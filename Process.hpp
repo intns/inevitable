@@ -49,7 +49,7 @@ public:
 	ProcessWork* GetBurst();
 	inline const std::queue<ProcessWork>& GetWorkQueue() const;
 
-	inline const float_t GetPredictedBurstLength() const { return mPredictedBurstLength; }
+	inline float_t GetPredictedBurstLength() const { return mPredictedBurstLength; }
 	float_t GetRemainingPredictedBurstLength();
 
 	inline CPU* GetParentCPU() { return mParentCpu; }

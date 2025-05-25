@@ -11,6 +11,9 @@
 #include <mutex>
 #include <chrono>
 
+#include <float.h>
+#include <math.h>
+
 // To represent unique system resources
 #define NON_COPYABLE(name)                 \
 	name(const name&)            = delete; \
@@ -53,7 +56,10 @@ namespace {
 	}
 
 	inline std::mutex gConsoleMutex;
-	std::string ColorText(const std::string& text, int colorCode) { return "\033[" + std::to_string(colorCode) + "m" + text + "\033[0m"; }
+	[[maybe_unused]] std::string ColorText(const std::string& text, int colorCode)
+	{
+		return "\033[" + std::to_string(colorCode) + "m" + text + "\033[0m";
+	}
 
 	template <typename... Args>
 	void ThreadPrint(Args&&... args)

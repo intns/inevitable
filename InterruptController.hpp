@@ -1,9 +1,10 @@
 #ifndef _INTERRUPTCONTROLLER_HPP
 #define _INTERRUPTCONTROLLER_HPP
 
+#include <condition_variable>
 #include <thread>
-#include <mutex>
 #include <vector>
+#include <mutex>
 #include <queue>
 
 #include "util.hpp"
@@ -21,16 +22,13 @@ class InterruptController {
 public:
 	NON_COPYABLE(InterruptController)
 
-	InterruptController(CPU& cpu);
+	InterruptController();
 	~InterruptController();
 
 	void NotifyBlocked(ProcessControlBlock*);
 
 private:
 	void IOWorker(std::stop_token);
-
-	// Parent
-	CPU& mCpu;
 
 	// Synchronisation
 	std::jthread mIoThread;

@@ -29,10 +29,12 @@ target_include_directories(inevitable PRIVATE ${PROJECT_SOURCE_DIR})
 # --- Compiler Options ---
 # Set compiler-specific warning levels to match your Visual Studio settings.
 if(MSVC)
-  # Corresponds to /W4 in Visual Studio
   target_compile_options(inevitable PRIVATE /W4)
 else()
   # Standard flags for GCC and Clang
   find_package(Threads REQUIRED)
-  target_compile_options(inevitable PRIVATE -Wall -Wextra -Wpedantic Threads::Threads)
+
+  target_compile_options(inevitable PRIVATE -Wall -Wextra -Wpedantic)
+
+  target_link_libraries(inevitable PRIVATE Threads::Threads)
 endif()

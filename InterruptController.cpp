@@ -1,15 +1,13 @@
 #include <iostream>
 #include <string>
-#include <condition_variable>
 
 #include "InterruptController.hpp"
 #include "Process.hpp"
 #include "util.hpp"
 #include "CPU.hpp"
 
-InterruptController::InterruptController(CPU& cpu)
-    : mCpu(cpu)
-    , mIoThread([this](std::stop_token st) { this->IOWorker(st); })
+InterruptController::InterruptController()
+    : mIoThread([this](std::stop_token st) { this->IOWorker(st); })
 {
 }
 
