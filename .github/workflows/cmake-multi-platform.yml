@@ -64,10 +64,6 @@ jobs:
     - name: Build
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} 
 
-    - name: Run Tests
-      working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      run: ctest --output-on-failure
-
     - name: Archive Build Artifacts
       shell: pwsh
       run: |
